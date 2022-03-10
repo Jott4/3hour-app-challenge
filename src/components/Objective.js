@@ -36,7 +36,12 @@ export default function Objective({ setRoute, objective }) {
       style={{ backgroundColor: objective.color }}
     >
       <div className="flex items-center justify-between w-full ">
-        <BsChevronLeft cursor={"pointer"} onClick={() => exit()} />
+        <div
+          className="p-2 hover:bg-gray-200 rounded-full"
+          onClick={() => exit()}
+        >
+          <BsChevronLeft cursor={"pointer"} />
+        </div>
         <h1 className="text-md font-bold" style={{ color: "#707070" }}>
           {objective.title}
         </h1>
@@ -44,7 +49,7 @@ export default function Objective({ setRoute, objective }) {
       </div>
       <div></div>
       <div className="w-full h-full flex items-center justify-center flex-col">
-        <img src={objective.img} />
+        <div className="text-9xl">{objective.img}</div>
         {/* <img src={objective.img} /> */}
         <audio src={meditacao} ref={audioRef} />
         <div className="w-full">
@@ -74,7 +79,7 @@ export default function Objective({ setRoute, objective }) {
           </div>
         </div>
         <div
-          className="rounded-full border w-10 h-10 flex items-center justify-center bg-gray-100 my-2 m-auto cursor-pointer"
+          className="rounded-full border w-10 h-10 flex items-center justify-center bg-gray-100 my-2 m-auto cursor-pointer hover:bg-gray-200"
           onClick={() => {
             if (!isPlaying) {
               audioRef.current.play();

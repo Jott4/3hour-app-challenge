@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { BsChevronLeft } from "react-icons/bs";
+import MemoHappy from "../assets/bob-faces/Happy";
 
 export default function Estatisticas({ setRoute }) {
   const [meditations, setMeditations] = useState(0);
@@ -21,7 +22,12 @@ export default function Estatisticas({ setRoute }) {
       }
       timeMeditating += item.time;
     });
-    setTimeMeditating(timeMeditating.toFixed());
+    // Transformando em min:sec
+    const min = Math.floor(timeMeditating / 60);
+    const sec = timeMeditating % 60;
+    setTimeMeditating(
+      `${min}:${sec.toFixed() < 10 ? "0" : ""}${sec.toFixed()}`
+    );
 
     const valuesObj = {};
     Object.values(cleanedObjectivesArr).map((item) => {
@@ -50,19 +56,26 @@ export default function Estatisticas({ setRoute }) {
       style={{ backgroundColor: "#FAFAFA" }}
     >
       <div className="flex items-center justify-between w-full ">
-        <BsChevronLeft
-          cursor={"pointer"}
+        <div
+          className="p-2 hover:bg-gray-200 rounded-full"
           onClick={() => {
             setRoute("objetivos");
           }}
-        />
-        <h1 className="text-md font-bold" style={{ color: "#707070" }}>
-          Estatísticas
-        </h1>
+        >
+          <BsChevronLeft cursor={"pointer"} />
+        </div>
+        <div className="flex flex-col items-center justify-center">
+          <h1 className="text-md font-bold" style={{ color: "#707070" }}>
+            Estatísticas
+          </h1>
+          <div className="text-6xl">
+            <MemoHappy />
+          </div>
+        </div>
         <div />
       </div>
-      <div className="my-5 w-full">
-        <div className="shadow-lg rounded-3xl flex items-center justify-center p-4 border  mb-6 bg-slate-100 w-full">
+      <div className="my-2 w-full">
+        <div className="shadow-lg rounded-3xl flex items-center justify-center p-4 border  mb-5 bg-slate-100 w-full">
           <div className="flex flex-col" style={{ color: "#707070" }}>
             <p className="text-md font-bold text-center">
               Meditações realizadas
@@ -72,21 +85,21 @@ export default function Estatisticas({ setRoute }) {
         </div>
       </div>
 
-      <div className="mb-5 w-full">
-        <div className="shadow-lg rounded-3xl flex items-center justify-center p-4 border  mb-6 bg-slate-100 w-full">
+      <div className="mb-1 w-full">
+        <div className="shadow-lg rounded-3xl flex items-center justify-center p-4 border  mb-5 bg-slate-100 w-full">
           <div className="flex flex-col" style={{ color: "#707070" }}>
             <p className="text-md font-bold text-center">
               Tempo total meditando
             </p>
             <p className="text-3xl font-bold text-center">
-              {timeMeditating} sec.
+              {timeMeditating} min
             </p>
           </div>
         </div>
       </div>
 
-      <div className="mb-5 w-full">
-        <div className="shadow-lg rounded-3xl flex items-center justify-center p-4 border  mb-6 bg-slate-100 w-full">
+      <div className="mb-1 w-full">
+        <div className="shadow-lg rounded-3xl flex items-center justify-center p-4 border  mb-5 bg-slate-100 w-full">
           <div className="flex flex-col" style={{ color: "#707070" }}>
             <p className="text-md font-bold text-center">
               Objetivo mais utilizado

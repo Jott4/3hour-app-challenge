@@ -7,6 +7,38 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.fadeIn {
+  animation: fadeIn 0.5s ease-in 1 forwards;
+}
+.fadeOut {
+  padding: 24px;
+  opacity: 1;
+  animation: fadeOut 0.5s ease-out 1 forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes slideDown {
+  to {
+    bottom: 0;
+    opacity: 1;
+  }
+}
+@keyframes slideUp {
+  to {
+    bottom: 50px;
+    opacity: 0;
+  }
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
