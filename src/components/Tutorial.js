@@ -1,7 +1,8 @@
+import Container from "./Container/Container";
 export default function Tutorial({ bobSrc, title, updateStepper }) {
   return (
     <div
-      className="p-6 flex flex-col h-screen justify-between items-center"
+      className="p-6 flex flex-col h-screen justify-between items-center fadeIn"
       style={{ backgroundColor: "#FAFAFA" }}
     >
       <h1
